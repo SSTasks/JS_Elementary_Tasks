@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Elementary Tasks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <script src="src/task1.js"></script>
+    <script src="src/task2.js"></script>
+    <script src="src/task3.js"></script>
+    <script src="src/task4.js"></script>
+    <script src="src/task5.js"></script>
+    <script src="src/task6.js"></script>
+    <script src="src/task7.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>JS Elementary Tasks</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-task1-list" data-toggle="list" href="#list-task1" role="tab" aria-controls="task1">Task №1</a>
+                <a class="list-group-item list-group-item-action" id="list-task2-list" data-toggle="list" href="#list-task2" role="tab" aria-controls="task2">Task №2</a>
+                <a class="list-group-item list-group-item-action" id="list-task3-list" data-toggle="list" href="#list-task3" role="tab" aria-controls="task3">Task №3</a>
+                <a class="list-group-item list-group-item-action" id="list-task4-list" data-toggle="list" href="#list-task4" role="tab" aria-controls="task4">Task №4</a>
+                <a class="list-group-item list-group-item-action" id="list-task5-list" data-toggle="list" href="#list-task5" role="tab" aria-controls="task5">Task №5</a>
+                <a class="list-group-item list-group-item-action" id="list-task6-list" data-toggle="list" href="#list-task6" role="tab" aria-controls="task6">Task №6</a>
+                <a class="list-group-item list-group-item-action" id="list-task7-list" data-toggle="list" href="#list-task7" role="tab" aria-controls="task7">Task №7</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <!--Page of task №1-->
+                <div class="tab-pane fade show active" id="list-task1" role="tabpanel" aria-labelledby="list-task1-list">
+                    <div>
+                        <h3>Шахматная доска</h3>
+                        <p>Вывести шахматную доску с заданными размерами высоты и ширины</p>
+                        <p>Входные параметры: длина, ширина, символ для отображения</p>
+                        <p>Выход: строка с представлением шахматной доски</p>
+                    </div>
+
+                    <form class="form-inline" name="form1">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" placeholder="num">
+                            <input type="text" class="form-control" placeholder="num">
+                            <input type="text" class="form-control" placeholder="symbol">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="chessBoardRun(0)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №2-->
+                <div class="tab-pane fade" id="list-task2" role="tabpanel" aria-labelledby="list-task2-list">
+                    <div>
+                        <h3>Анализ конвертов</h3>
+                        <p>Есть два конверта со сторонами (a,b) и (c,d). Требуется определить, можно ли один конверт вложить в другой. Программа должна обрабатывать ввод чисел с плавающей точкой</p>
+                        <p>Входные параметры: объекты конверт1 и конверт2</p>
+                        <p>Выход: номер конверта, если вложение возможно, 0 – если вложение невозможно</p>
+                    </div>
+
+                    <form class="form-inline" name="form2">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <p>Envelope 1:</p>
+                            <input type="text" class="form-control" placeholder="width">
+                            <input type="text" class="form-control" placeholder="height">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <p>Envelope 2:</p>
+                            <input type="text" class="form-control" placeholder="width">
+                            <input type="text" class="form-control" placeholder="height">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runEnvelopes(1)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №3-->
+                <div class="tab-pane fade" id="list-task3" role="tabpanel" aria-labelledby="list-task3-list">
+                    <div>
+                        <h3>Сортировка треугольников</h3>
+                        <p>Вывести треугольники в порядке убывания их площади</p>
+                        <p>Входные параметры: массив объектов треугольник</p>
+                        <p>Выход: упорядоченный массив имён треугольников</p>
+                        <h4>Примечание:</h4>
+                        <ul>
+                            <li>Расчёт площади треугольника должен производится по формуле Герона</li>
+                            <li>Каждый треугольник определяется именами вершин и длинами его сторон</li>
+                            <li>Приложение должно обрабатывать ввод чисел с плавающей точкой</li>
+                        </ul>
+                    </div>
+
+                    <form class="form-inline" name="form3">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <textarea name="" id="" cols="60" rows="10"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runAreaOfTriangle(2)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №4-->
+                <div class="tab-pane fade" id="list-task4" role="tabpanel" aria-labelledby="list-task4-list">
+                    <div>
+                        <h3>Палиндром</h3>
+                        <p>Проверить является ли число или его часть палиндромом. Например, число 1234437 не является палиндромом, но является палиндромом его часть 3443. Числа меньшие, чем 10 палиндромом не считать</p>
+                        <p>Входные параметры: число</p>
+                        <p>Выход: извлечённый из числа палиндром либо 0, если извлечение не удалось</p>
+                    </div>
+
+                    <form class="form-inline" name="form4">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" placeholder="num">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runDefinePalindrome(3)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №5-->
+                <div class="tab-pane fade" id="list-task5" role="tabpanel" aria-labelledby="list-task5-list">
+                    <div>
+                        <h3>Счастливые билеты</h3>
+                        <p>Есть 2 способа подсчёта счастливых билетов:</p>
+                        <p>1. Простой — если на билете напечатано шестизначное число, и сумма первых трёх цифр равна сумме последних трёх, то этот билет считается счастливым</p>
+                        <p>Сложный — если сумма чётных цифр билета равна сумме нечётных цифр билета, то билет считается счастливым</p>
+                        <p>Определить программно какой вариант подсчёта счастливых билетов даст их большее количество на заданном интервале</p>
+                        <p>Входные параметры: объект context с полями min и max</p>
+                        <p>Выход: объект с информацией о победившем методе и количестве счастливых билетов для каждого способа подсчёта</p>
+                    </div>
+
+                    <form class="form-inline" name="form5">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" maxlength="6" placeholder="min">
+                            <input type="text" class="form-control" maxlength="6" placeholder="max">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runTickets(4)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №6-->
+                <div class="tab-pane fade" id="list-task6" role="tabpanel" aria-labelledby="list-task6-list">
+                    <div>
+                        <h3>Числовая последовательность</h3>
+                        <p>Вывести через запятую ряд длиной n, состоящий из натуральных чисел, квадрат которых не меньше заданного m</p>
+                        <p>Входные параметры: длина и значение минимального квадрата</p>
+                        <p>Выход: строка с рядом чисел</p>
+                    </div>
+
+                    <form class="form-inline" name="form6">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" placeholder="length">
+                            <input type="text" class="form-control" placeholder="min">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runNumberSequence(5)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+
+                <!--Page of task №7-->
+                <div class="tab-pane fade" id="list-task7" role="tabpanel" aria-labelledby="list-task7-list">
+                    <div>
+                        <h3>Числовая последовательность</h3>
+                        <p>Вывести через запятую ряд длиной n, состоящий из натуральных чисел, квадрат которых не меньше заданного m</p>
+                        <p>Входные параметры: длина и значение минимального квадрата</p>
+                        <p>Выход: строка с рядом чисел</p>
+                    </div>
+
+                    <form class="form-inline" name="form7">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" placeholder="min/length">
+                            <input type="text" class="form-control" placeholder="max">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2" onclick="runRangeFib(6)">Run</button>
+                    </form>
+
+                    <div class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
