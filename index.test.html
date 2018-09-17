@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mocha and chai testing of Elementary Tasks</title>
+  <!-- подключаем стили Mocha, для отображения результатов -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- подключаем библиотеку Mocha -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+    
+  <script src="src/task1.js"></script>
+  <script src="src/task2.js"></script>
+  <script src="src/task3.js"></script>
+  <script src="src/task4.js"></script>
+  <script src="src/task5.js"></script>
+  <script src="src/task7.js"></script>
+  <script src="src/task6.js"></script>
+
+  <script src="tests/task1.test.js"></script>
+  <script src="tests/task2.test.js"></script>
+  <script src="tests/task3.test.js"></script>
+  <script src="tests/task4.test.js"></script>
+  <script src="tests/task5.test.js"></script>
+  <script src="tests/task6.test.js"></script>
+  <script src="tests/task7.test.js"></script>
+
+
+  <!-- в элементе с id="mocha" будут результаты тестов -->
+  <div id="mocha"></div>
+
+  <!-- запустить тесты! -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>

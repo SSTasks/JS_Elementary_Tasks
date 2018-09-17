@@ -1,23 +1,18 @@
-// import {chessBoard} from "/src/task1.js";
-// import {envelopes} from "./src/task2.js";
-// import {areaOfTriangle} from "./src/task3.js";
-// import {defindPalindrome} from "./src/task4.js";
-// import {integers} from "./src/task6.js";
-//let chessBoard = require("./src/task1.js");
-
 
 //task 1
-function chessBoardRun(n){
+function chessBoardRun(n) {
     let v = document.form1.elements;//get inputs
+
+    //run the main function
     let result = chessBoard(v[0].value, v[1].value, v[2].value);
 
-    if (typeof result == 'string') {
+    if (!result.status) {
         console.log(result);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
-//console.log(chessBoard(5,7,'▒'));
+
 
 //task 2
 function runEnvelopes(n) {
@@ -33,122 +28,124 @@ function runEnvelopes(n) {
         height:v[3].value
     }
 
+    //run the main function
     let result = envelopes(env1, env2);
 
-    if (typeof result == 'number') {
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status) {
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
-//console.log(envelopes(env1, env2));
 
 //task 3
-function runAreaOfTriangle(n){
-    let text = document.querySelectorAll("textarea")[0].value;
+function runAreaOfTriangle(n) {
+    let text = document.querySelectorAll("textarea")[0].value;//get value
+
+    //run the main function
     let result = areaOfTriangle(triangles);
 
-    if (Array.isArray(result)) {
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status) {
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
 let triangles = [
     {
         vertices: 'ABC1',
-        a: 30,
-        b: 30,
-        c: 22.36243563
+        a: 4,
+        b: 4,
+        c: 4.36243563
     },
     {
         vertices: 'ABC2',
-        a: 111,
-        b: 221,
-        c: 221.36
+        a: 5,
+        b: 5,
+        c: 5.36
     },
     {
         vertices: 'ABC3',
-        a: 15,
-        b: 25,
-        c: 22.36
+        a: 3,
+        b: 3,
+        c: 3.36
     },
     {
         vertices: 'ABC4',
-        a: 6,
-        b: 5,
-        c: 5
+        a: 2,
+        b: 2,
+        c: 3
     }
 ];
 
-//console.log("New array", areaOfTriangle(triangles));
-
 
 //task4
-function runDefinePalindrome(n){
-    let value = document.form4.elements[0].value;
+function runDefinePalindrome(n) {
+    let value = document.form4.elements[0].value;//get value
 
+    //run the main function
     let result = definePalindrome(value);
 
-    if (typeof result == 'string') {
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status) {
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
-//console.log(defindPalindrome("10350512"));
 
 
 //task5
-function runTickets(n){
-    let v = document.form5.elements;
+function runTickets(n) {
+    let v = document.form5.elements;//get inputs
 
+    //run the main function
     let result = tickets(v[0].value, v[1].value);
 
-    if (typeof result == 'string') {
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status) {
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
 
 //task6
-function runNumberSequence(n){
-    let v = document.form6.elements;
+function runNumberSequence(n) {
+    let v = document.form6.elements;//get inputs
 
+    //run the main function
     let result = numberSequence(v[0].value, v[1].value);
 
-    if (typeof result == 'string') {
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status) {
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
-// console.log(integers(8, 7));
 
 
 //task7
-function runRangeFib(n){
-    let v = document.form7.elements;
+function runRangeFib(n) {
+    let v = document.form7.elements;//get inputs
 
+    //run the main function
     let result = rangeFib(v[0].value, v[1].value);
 
-    if (Array.isArray(result)){
-        document.querySelectorAll(".result")[n].innerHTML=`Результат: ${result}`;
-        console.log(result);
+    if (!result.status){
+        successHandler(result, n);
     } else {
-        error(result.reason, n);
+        errorHandler(result.reason, n);
     }
 }
 
 
+//success handling function
+function successHandler(text, n) {
+    document.querySelectorAll(".result")[n].innerHTML=`Результат: ${text}`;
+    console.log(text);
+}
+
 //error handling function
-function error(text, n){
+function errorHandler(text, n) {
     console.log(text);
     document.querySelectorAll(".result")[n].style="color:red";
     document.querySelectorAll(".result")[n].innerHTML=text;

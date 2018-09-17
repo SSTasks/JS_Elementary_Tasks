@@ -1,9 +1,10 @@
 function numberSequence(n, m){
-    let reg = /^\d+$/;
-    if(reg.test(n) && reg.test(m)) {
+    let checkValid = isValid6(n, m);
+
+    if (!checkValid.status) {
         n = parseInt(n);
         m = parseInt(m);
-        
+
         let arr = [];
         let start = Math.ceil(Math.sqrt(m));
 
@@ -11,10 +12,22 @@ function numberSequence(n, m){
             arr.push(i);
         }
         return arr.join(',');
-    }else{
-        return {
+
+    } else return checkValid;
+}
+
+
+function isValid6(n, m) {
+    if (n && m) {
+        let reg = /^\d+$/;
+        if ((reg.test(n)) && (reg.test(m))) {
+            return true;
+        } else return {
             status: 'failed',
-            reason: 'Значение не введено или введено некорректно'
+            reason: 'Значения введены некорректно'
         }
+    } else return {
+        status: 'failed',
+        reason: 'Не все значения введены'
     }
 }

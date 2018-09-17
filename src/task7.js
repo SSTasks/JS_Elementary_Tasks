@@ -1,41 +1,77 @@
 ﻿function rangeFib(min, max){
-    let reg = /^\d+$/;
-    if(reg.test(min) && (reg.test(max) || (!max))) {
+    let checkValid = isValid7(min, max);
 
-        if((parseInt(min)<=parseInt(max) || (!max)) && min!=0) {
-            let num = [];
-            //check min and max
-            if (max) {
-                for (let i = 1; i < 30; i++) {
-                    let getFib = fib(i);
-                    if (getFib >= min && getFib <= max) {
-                        num.push(getFib);
-                    }
-                }
-            } else { //check length
-                let len = min;
-                for (let i = 1; i < 30; i++) {
-                    let getFib = fib(i);
-                    if (getFib.toString().length == len) {
-                        num.push(getFib);
-                    }
-                }
-            }
-            return num;
-        } else{
-            return {
-                status: 'failed',
-                reason: 'Минимальное значение не может быть больше максимального или 0'
-            }
+    if (!checkValid.status) {
+        //check min and max
+        if (max) {
+            return fibInRange(min, max);
+        } else { //check length
+            return fibWithLength(min);
         }
-    }else{
-        return {
-            status: 'failed',
-            reason: 'Значение не введено или введено некорректно'
-        }
-    }
+    } else return checkValid;
 }
 
-function fib(n) {
-    return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+//if Fibonacci number between min amd max
+function fibInRange(min, max) {
+    let getFib = 0;
+    let fib = [1,1];
+    let num = [];
+
+    for (let i = 0; getFib < max; i++) {
+        //for the first two iterations
+        if (i >= 2) {
+            fib.push(fib[fib.length-1] + fib[fib.length-2]);
+            getFib = fib[fib.length-1];
+        } else getFib = fib[i];
+
+        if (getFib >= min && getFib <= max) {
+            num.push(getFib);
+        }
+    }
+
+    if (num[0]){
+        return num;
+    } else return 'В этом промежутке нет чисел Фибоначчи';
+}
+
+//if Fibonacci number has length
+function fibWithLength(len) {
+    let getFib = 0;
+    let fib = [1,1];
+    let num = [];
+
+    for (let i = 0; getFib.toString().length < +len+1; i++) {
+        //for the first two iterations
+        if (i >= 2) {
+            fib.push(fib[fib.length-1] + fib[fib.length-2]);
+            getFib = fib[fib.length-1];
+        } else getFib = fib[i];
+
+        if (getFib.toString().length == len) {
+            num.push(getFib);
+        }
+    }
+    return num;
+}
+
+
+function isValid7(min, max) {
+    if (min) {
+        let reg = /^\d+$/;
+
+        if (reg.test(min) && (reg.test(max) || (!max))) {
+            if ((parseInt(min) < parseInt(max) || (!max)) && min!=0) {
+                return true;
+            } else return {
+                status: 'failed',
+                reason: 'Минимальное значение должно быть меньше максимального'
+            }
+        } else return {
+            status: 'failed',
+            reason: 'Значения введены некорректно'
+        }
+    } else return {
+        status: 'failed',
+        reason: 'Не все значения введены'
+    }
 }
