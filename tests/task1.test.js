@@ -2,54 +2,64 @@ describe('Testing task№1', function() {
 
 	// main function
     describe('Main function', function() {
-    	it('Enter 5, 5, "#". Expect type of result "String"', function() {
-            let result = chessBoard(5, 5, "#");
+        let validOpt = {
+            enter: [1, 2, "#"],
+            exit: '# # \n'
+        };
+
+        let invalidOpt = {
+            enter: [-1, 2, "#"],
+            exit: 'invalid'
+        };
+
+    	it(`Enter ${validOpt.enter}. Expect type of result "String"`, function() {
+            let result = chessBoard(validOpt.enter[0], validOpt.enter[1], validOpt.enter[2]);
             assert.equal(typeof result, 'string');
         });
 
-        it('Enter -5, 5, "#". Expect type of result "Object"', function() {
-            let result = chessBoard("a", 5, "#");
+        it(`Enter ${validOpt.enter}. Expect type of result "Object"`, function() {
+            let result = chessBoard(invalidOpt.enter[0], invalidOpt.enter[1], invalidOpt.enter[2]);
             assert.equal(typeof result, 'object');
         });
 
-        it('Enter 1, 2, "#". Expect result "# # "', function() {
-            let result = chessBoard(1, 2, "#");
+        it(`Enter ${validOpt.enter}. Expect string with symbols`, function() {
+            let result = chessBoard(validOpt.enter[0], validOpt.enter[1], validOpt.enter[2]);
             assert.equal(result, '# # \n');
         });
     });
 
     // validation function
 	describe('Validation function', function(){
-		let options = [
-			{
-				enter: [5, 5, "#"],
-				exit: true
-			},
-			{
-				enter: [-5, 5, "#"],
-				exit: 'Значения введены некорректно'
-			},
-            {
-                enter: ["a", 5, "#"],
-                exit: 'Значения введены некорректно'
-            },
-			{
-				enter: [5, 5],
-				exit: 'Не все значения введены'
-			}
-		];
+		let validOpt = {
+            enter: [1, 2, "#"],
+            exit: true
+        };
 
-        it(`Enter "${options[0].enter}". Should return true`, function(){
-            let result = isValid1(options[0].enter[0], options[0].enter[1], options[0].enter[2]);
-            assert.equal(result, options[0].exit);
+        let invalidOpt = {
+            invalid_1: {
+                enter: [-1, 2, "#"],
+                exit: 'invalid'
+            },
+            invalid_2: {
+                enter: ["a", 2, "#"],
+                exit: 'invalid'
+            },
+            empty: {
+                enter: [1, 2],
+                exit: 'empty'
+            }
+        };
+
+        it (`Enter "${validOpt.enter}". Should return true`, function() {
+            let result = isValid1(validOpt.enter[0], validOpt.enter[1], validOpt.enter[2]);
+            assert.equal(result, validOpt.exit);
         });
 
-		for (let i = 1; i < options.length; i++) {
-			it(`Enter "${options[i].enter}". Expect string with error description`, function(){
-				let result = isValid1(options[i].enter[0], options[i].enter[1], options[i].enter[2]);
-				assert.equal(result.reason, options[i].exit);
-			});
-		}
+        for (let opt in invalidOpt) {
+            it(`Enter "${invalidOpt[opt].enter}". Expect string with error description`, function(){
+                let result = isValid1(invalidOpt[opt].enter[0], invalidOpt[opt].enter[1], invalidOpt[opt].enter[2]);
+                assert.equal(result.reason, invalidOpt[opt].exit);
+            });
+        }
     });
-   
 });

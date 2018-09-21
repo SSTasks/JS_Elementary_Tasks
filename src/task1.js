@@ -11,9 +11,12 @@ function chessBoard(h,w,s) {
             }
             board += '\n';
         }
+
         return board;
 
-    } else return checkValid;
+    } else {
+        return checkValid;
+    }
 }
 
 
@@ -23,15 +26,15 @@ function isValid1(h, w, s) {
         let reg = /^\d+$/;
 
         //checking the height and width is a number or not
-        if ((reg.test(h)) && (reg.test(w))) {
+        if (reg.test(h) && reg.test(w) && parseInt(h) && parseInt(w)) {
             return true;
         } else return {
             status: 'failed',
-            reason: 'Значения введены некорректно'
+            reason: 'invalid'
         }
     } else return {
         status: 'failed',
-        reason: 'Не все значения введены'
+        reason: 'empty'
     }
 }
 

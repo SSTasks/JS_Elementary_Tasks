@@ -8,7 +8,9 @@
         } else { //check length
             return fibWithLength(min);
         }
-    } else return checkValid;
+    } else {
+        return checkValid;
+    }
 }
 
 //if Fibonacci number between min amd max
@@ -31,7 +33,9 @@ function fibInRange(min, max) {
 
     if (num[0]){
         return num;
-    } else return 'В этом промежутке нет чисел Фибоначчи';
+    } else {
+        return 'В этом промежутке нет чисел Фибоначчи';
+    }
 }
 
 //if Fibonacci number has length
@@ -51,6 +55,7 @@ function fibWithLength(len) {
             num.push(getFib);
         }
     }
+
     return num;
 }
 
@@ -59,19 +64,19 @@ function isValid7(min, max) {
     if (min) {
         let reg = /^\d+$/;
 
-        if (reg.test(min) && (reg.test(max) || (!max))) {
-            if ((parseInt(min) < parseInt(max) || (!max)) && min!=0) {
+        if (reg.test(min) && (reg.test(max) && parseInt(min) || (!max))) {
+            if ((parseInt(min) < parseInt(max) || (!max))) {
                 return true;
             } else return {
                 status: 'failed',
-                reason: 'Минимальное значение должно быть меньше максимального'
+                reason: 'minMoreMax'
             }
         } else return {
             status: 'failed',
-            reason: 'Значения введены некорректно'
+            reason: 'invalid'
         }
     } else return {
         status: 'failed',
-        reason: 'Не все значения введены'
+        reason: 'empty'
     }
 }

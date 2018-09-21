@@ -2,59 +2,63 @@ describe('Testing task№6', function() {
 
     // main function
     describe('Main function', function() {
-        let options =  [
-            {
-                enter: [5, 5],
-                exit: "3,4,5,6,7"
-            },
-            {
-                enter: [5, -5],
-                exit: 'Значения введены некорректно'
-            }
-        ];
+        let validOpt = {
+            enter: [5, 5],
+            exit: '3,4,5,6,7'
+        };
+
+        let invalidOpt = {
+            enter: [5, -5],
+            exit: 'invalid'
+        };
 
         it('Enter correct value. Expect type of result "String"', function() {
-            let result = numberSequence(options[0].enter[0], options[0].enter[1]);
+            let result = numberSequence(validOpt.enter[0], validOpt.enter[1]);
             assert.equal(typeof result, 'string');
         });
 
         it('Enter incorrect value. Expect type of result "Object"', function() {
-            let result = numberSequence(options[1].enter[0], options[1].enter[1]);
+            let result = numberSequence(invalidOpt.enter[0], invalidOpt.enter[1]);
             assert.equal(typeof result, 'object');
         });
 
-        it(`Enter "${options[0].enter}". Expect string with the numbers`, function() {
-            let result = numberSequence(options[0].enter[0], options[0].enter[1]);
-            assert.equal(result, options[0].exit);
+        it(`Enter "${validOpt.enter}". Expect string with the numbers`, function() {
+            let result = numberSequence(validOpt.enter[0], validOpt.enter[1]);
+            assert.equal(result, validOpt.exit);
         });
     });
 
     // validation function
-    describe('Validation function', function(){
-        let options =  [
-            {
-                enter: [5, 5],
-                exit: true
-            },
-            {
-                enter: [5, -5],
-                exit: 'Значения введены некорректно'
-            },
-            {
-                enter: [5],
-                exit: 'Не все значения введены'
-            }
-        ];
+    describe('Validation function', function() {
+        let validOpt = {
+            enter: [5, 5],
+            exit: true
+        };
 
-        it(`Enter "${options[0].enter}". Should return true`, function(){
-            let result = isValid6(options[0].enter[0], options[0].enter[1]);
-            assert.equal(result, options[0].exit);
+        let invalidOpt = {
+            invalid_1: {
+                enter: [5, -5],
+                exit: 'invalid'
+            },
+            invalid_2: {
+                enter: [5, "a"],
+                exit: 'invalid'
+            },
+            empty: {
+                enter: [5],
+                exit: 'empty'
+            }
+        };
+
+        it(`Enter "${validOpt.enter}". Should return true`, function() {
+            let result = isValid6(validOpt.enter[0], validOpt.enter[1]);
+            assert.equal(result, validOpt.exit);
         });
 
-        for (let i = 1; i < options.length; i++) {
-            it(`Enter "${options[i].enter}". Expect string with error description`, function(){
-                let result = isValid6(options[i].enter[0], options[i].enter[1]);
-                assert.equal(result.reason, options[i].exit);
+        for (let opt in invalidOpt) {
+            it(`Enter "${invalidOpt[opt].enter}". Expect string with error description`, function() {
+                let result = isValid6(invalidOpt[opt].enter[0], invalidOpt[opt].enter[1]);
+                assert.equal(result.reason, invalidOpt[opt].exit);
             });
         }
     });

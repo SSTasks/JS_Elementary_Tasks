@@ -20,7 +20,9 @@ function tickets(min, max){
             return `Победил сложный метод - ${hardMethodCounter}, против - ${simpleMethodCounter}`
         } else return `Ни один из методов не победил`;
 
-    } else return checkValid;
+    } else {
+        return checkValid;
+    }
 }
 
 
@@ -32,15 +34,15 @@ function isValid5(min, max) {
                 return true;
             } else return {
                 status: 'failed',
-                reason: 'Значение должно содержать 6 цифр'
+                reason: 'notEnoughSymbol'
             }
         } else return {
             status: 'failed',
-            reason: 'Значения введены некорректно'
+            reason: 'invalid'
         }
     } else return {
         status: 'failed',
-        reason: 'Значения не введены'
+        reason: 'empty'
     }
 }
 
@@ -52,6 +54,7 @@ function numToArr(index) {
     for (let j = 0; j < numToStr.length; j++) {//array with numbers
         arr[arr.length-j-1] = parseInt(numToStr[numToStr.length-j-1]);
     }
+
     return arr;
 }
 

@@ -22,3 +22,17 @@ h1{
 .form-group p{
     margin-top:15px;
 }
+
+.triangle, #triangles{
+    width:100%;
+}
+
+.btn-bottom{
+    margin:10px 10px 0 0;
+}
+
+.btn-danger{
+    margin-top:7px;
+    padding:0 5px;
+    border-radius: 100px;
+}

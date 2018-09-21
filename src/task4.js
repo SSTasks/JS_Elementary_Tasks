@@ -11,9 +11,12 @@ function definePalindrome(p){
                 if (pal == palReverse && pal.length > 1) return pal;
             }
         }
+
         return 0;
 
-    } else return checkValid;
+    } else {
+        return checkValid;
+    }
 }
 
 
@@ -26,10 +29,10 @@ function isValid4(p) {
             return true;
         } else return {
             status: 'failed',
-            reason: 'Значение введено некорректно'
+            reason: 'invalid'
         }
     } else return {
         status: 'failed',
-        reason: 'Значение не введено'
+        reason: 'empty'
     }
 }

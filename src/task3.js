@@ -12,11 +12,12 @@ function areaOfTriangle(arr){
 
         } else return arrOfAreas;
 
-    } else return checkValid;
+    } else {
+        return checkValid;
+    }
 }
 
 function isValid3(arr) {
-
     for (let i = 0; i < arr.length; i++) {
         let reg = /^([0-9]*[.])?[0-9]+$/;
 
@@ -26,14 +27,14 @@ function isValid3(arr) {
 
         if (a && b && c ) {
             if (reg.test(a) && reg.test(b) && reg.test(c)){
-                return true;
+                console.log(`triangle №${i+1} is valid`);
             } else return {
                 status: 'failed',
-                reason: 'Значения введены некорректно'
+                reason: 'invalid'
             }
         } else return {
             status: 'failed',
-            reason: 'Не все значения введены'
+            reason: 'empty'
         }
     }
 
@@ -45,9 +46,9 @@ function getAreas(arr) {
     let arrOfAreas = [];
 
     for (let i = 0; i < arr.length; i++) {
-        let a = arr[i].a;
-        let b = arr[i].b;
-        let c = arr[i].c;
+        let a = parseInt(arr[i].a);
+        let b = parseInt(arr[i].b);
+        let c = parseInt(arr[i].c);
 
         let p = (a + b + c) / 2;
         let area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
@@ -56,10 +57,13 @@ function getAreas(arr) {
         if(isNaN(area)){
             return {
                 status: 'failed',
-                reason: 'Невозможно рассчитать площадь треугольника по заданным сторонам'
+                reason: 'incorrectSides'
             }
-        } else arrOfAreas.push(area);
+        } else {
+            arrOfAreas.push(area);
+        }
     }
+
     return arrOfAreas;
 }
 
@@ -80,5 +84,6 @@ function sortTriangle(arr, arrOfAreas) {
             }
         }
     }
+
     return arrOfCopy;
 }

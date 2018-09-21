@@ -15,4 +15,8 @@
 ```
  start index.html
 ```
+6. Сommand to run the unit tests
+```
+ start index.test.html
+```
 
